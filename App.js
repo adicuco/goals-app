@@ -14,28 +14,18 @@ const GoalsList = styled.FlatList`
 `;
 
 const App = () => {
-  const [inputGoal, setInputGoal] = useState("");
   const [goals, setGoals] = useState([]);
 
-  const handleInputChange = text => {
-    setInputGoal(text);
-  };
-
-  const handleAddGoal = () => {
+  const handleAddGoal = newGoal => {
     setGoals(currentGoals => [
       ...currentGoals,
-      { key: Math.random().toString(), value: inputGoal }
+      { key: Math.random().toString(), value: newGoal }
     ]);
-    setInputGoal("");
   };
 
   return (
     <Container>
-      <GoalInput
-        value={inputGoal}
-        onChangeText={handleInputChange}
-        onPress={handleAddGoal}
-      />
+      <GoalInput onAddGoal={handleAddGoal} />
 
       <GoalsList
         data={goals}

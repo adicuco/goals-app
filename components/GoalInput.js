@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.View`
@@ -16,15 +16,26 @@ const Input = styled.TextInput`
 
 const Button = styled.Button``;
 
-const GoalInput = ({ value, onChangeText, onPress }) => {
+const GoalInput = ({ onAddGoal }) => {
+  const [inputGoal, setInputGoal] = useState("");
+
+  const handleInputChange = text => {
+    setInputGoal(text);
+  };
+
+  const handleSubmit = () => {
+    onAddGoal(inputGoal);
+    setInputGoal("");
+  };
+
   return (
     <Container>
       <Input
         placeholder="Course Goal"
-        onChangeText={onChangeText}
-        value={value}
+        onChangeText={handleInputChange}
+        value={inputGoal}
       />
-      <Button title="Add" onPress={onPress} />
+      <Button title="Add" onPress={handleSubmit} />
     </Container>
   );
 };
