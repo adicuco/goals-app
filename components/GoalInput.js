@@ -18,6 +18,15 @@ const Input = styled.TextInput`
   margin-vertical: 10px;
 `;
 
+const ButtonsContainer = styled.View`
+  width: 60%;
+  flex-direction: row;
+  justify-content: space-around;
+`;
+
+const ButtonWrapper = styled.View`
+  width: 40%;
+`;
 const Button = styled.Button``;
 
 const GoalInput = ({ onAddGoal, visible, onCancel }) => {
@@ -42,8 +51,14 @@ const GoalInput = ({ onAddGoal, visible, onCancel }) => {
           onChangeText={handleInputChange}
           value={inputGoal}
         />
-        <Button title="Add" onPress={handleSubmit} />
-        <Button title="Cancel" onPress={onCancel} color="red" />
+        <ButtonsContainer>
+          <ButtonWrapper>
+            <Button title="Cancel" onPress={onCancel} color="red" />
+          </ButtonWrapper>
+          <ButtonWrapper>
+            <Button title="Add" onPress={handleSubmit} />
+          </ButtonWrapper>
+        </ButtonsContainer>
       </Container>
     </Modal>
   );
