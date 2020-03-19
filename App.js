@@ -23,13 +23,22 @@ const App = () => {
     ]);
   };
 
+  const handleDeleteGoal = key => {
+    setGoals(currentGoals => currentGoals.filter(goal => goal.key !== key));
+  };
+
   return (
     <Container>
       <GoalInput onAddGoal={handleAddGoal} />
 
       <GoalsList
         data={goals}
-        renderItem={({ item }) => <GoalItem title={item.value} />}
+        renderItem={({ item }) => (
+          <GoalItem
+            title={item.value}
+            onDelete={() => handleDeleteGoal(item.key)}
+          />
+        )}
       />
     </Container>
   );

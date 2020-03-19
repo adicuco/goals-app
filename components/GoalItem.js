@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import { TouchableOpacity } from "react-native";
+
 const Container = styled.View`
   padding: 10px;
   margin-vertical: 5px;
@@ -14,11 +16,13 @@ const Container = styled.View`
 
 const Title = styled.Text``;
 
-const GoalItem = ({ title }) => {
+const GoalItem = ({ title, onDelete }) => {
   return (
-    <Container>
-      <Title>{title}</Title>
-    </Container>
+    <TouchableOpacity onPress={onDelete} activeOpacity={0.8}>
+      <Container>
+        <Title>{title}</Title>
+      </Container>
+    </TouchableOpacity>
   );
 };
 
